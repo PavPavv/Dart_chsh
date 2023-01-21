@@ -596,3 +596,14 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+## Super fast apk build for Android
+
+1. In the root directory of the flutter project run following command:
+
+> flutter build apk --build-name=1.0 --build-number=1
+
+2.Copy _app-release.apk_ from "flutter_application_root_dir/build/app/outputs/flutter-apk" to your android mobile
+
+3.Find on your android mobile _app-release.apk_ file and run it ignoring security warnings.
+
