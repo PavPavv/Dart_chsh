@@ -18,7 +18,7 @@ void main() {
 
 The Dart language is type safe: it uses a combination of static type checking and runtime checks to ensure that a variable’s value always matches the variable’s static type, sometimes referred to as sound typing. Although types are mandatory, type annotations are optional because of type inference.
 
-Everything you can place in a variable is an object, and every object is an instance of a class. Even numbers, functions, and null are objects. With the exception of null (if you enable sound null safety), all objects inherit from the **Object **class.
+Everything you can place in a variable is an object, and every object is an instance of a class. Even numbers, functions, and null are objects. With the exception of null (if you enable sound null safety), all objects inherit from the **Object** class.
 
 1. num - int, double
 2. int  - 1
