@@ -21,7 +21,7 @@ The Dart language is type safe: it uses a combination of static type checking an
 Everything you can place in a variable is an object, and every object is an instance of a class. Even numbers, functions, and null are objects. With the exception of null (if you enable sound null safety), all objects inherit from the **Object** class.
 
 1. num - int, double
-2. int  - 1
+2. int - 1
 3. double - 1.5
 4. String - 'Hello'
 5. bool - true/false
@@ -96,7 +96,6 @@ String d = 'Ha';
 print(d*5); // 'HaHaHaHaHa'
 ```
 
-
 ## List, Set, Map
 
 ### List
@@ -115,10 +114,11 @@ void main() {
 
 ```dart
 void main() {
+  //  List
   List<int> arr = [1,2,3,4,5];
-  
+
   print(arr.runtimeType);
-  
+
   int a = arr.length;
   arr.add(6);
   arr.addAll([7,8,9]);
@@ -145,7 +145,7 @@ void main() {
   print(arr.isEmpty);
   print(arr.isNotEmpty);
   print('----------------------------------------------------');
-  
+
   print(['Hello', 'world!'].join(' ')); //  {Hello, world, !}
   arr.forEach((el) => print(el));
   print('End of forEach');
@@ -167,9 +167,9 @@ void main() {
   [1,2,3,3,3].toSet();
   [1,2,3,3,3].toString();
   print('----------------------------------------------------');
-  
-  
-  //  Iterable   
+
+
+  //  Iterable
    //  final aa = arr.iterator;
   //  aa.moveNext();
   print(arr.getRange(0,2)); //  (1,2)
@@ -189,9 +189,9 @@ void main() {
   arr1.where((el)=> el <= 9);
   arr1.whereType<int>();
   print('----------------------------------------------------');
-  
-  
-  
+
+
+  //  Set
   Set<String> b = {'Hello', 'world'};
   Set<int> b1 = {100,200,300};
   b.add('!');
@@ -200,7 +200,8 @@ void main() {
   b1.difference({1,2,300});
   b1.union({1,2,300});
   print('----------------------------------------------------');
-  
+
+  //  Map
   Map<int, String> obj = {
     1: 'Hello',
     2: 'world',
@@ -279,50 +280,50 @@ void main() {
 class Animal {
   final String kind;
   final bool? isMale;
-  
+
   String get animalKind {
     return kind;
   }
-  
+
   bool get animalIsMale {
     return isMale ?? true;
   }
-  
+
   String test() {
     return 'test';
   }
 
   // Constrictor
   Animal({required this.kind, this.isMale});
-} 
+}
 
 class Dog extends Animal {
   String name;
   double age;
   final String? color;
-  
+
   // Constrictor
   Dog({required super.kind, super.isMale, required this.name, required this.age, this.color}) {
     print('Created');
   }
-  
+
   int birthYear() {
     int result = 2021;
     return result;
   }
-  
+
   String info() {
     return 'Name: $name and age is $age';
   }
-  
+
   String get dogName {
     return name;
   }
-  
+
   set newName(String newName) {
     name = newName;
   }
-  
+
   @override
   String test() {
     return 'Dogs are awesome!';
@@ -331,7 +332,7 @@ class Dog extends Animal {
 
 void main() {
   Dog dog = Dog(kind: 'dog', name: 'Jack', age: 1.3, color: 'black', isMale: true);
-  
+
   print(dog.name);
   print(dog.age);
   print(dog.color);
@@ -356,17 +357,17 @@ mixin showStat {
 
 class ID {
   final int id;
-  
+
   // Constructor
   ID(this.id);
 }
 
 class Name {
   final String name;
-  
+
   //  Constructor
   Name(this.name);
-  
+
   String showName() {
     return name;
   }
@@ -377,9 +378,9 @@ class User with showStat implements ID, Name {
   final int id;
   @override
   final String name;
-  
+
   User(this.id, this.name);
-  
+
   @override
   String showName() {
     return '$name $id';
@@ -421,7 +422,7 @@ void main() {
 ```dart
 class User {
   String name;
-  
+
   User(this.name);
 }
 
@@ -474,17 +475,17 @@ void main() {
 ```dart
 class User {
   int id;
-  
+
   static final cacheUsers = <User>[
     User(0),
     User(1),
     User(2),
   ];
-  
+
   //  Standard constructor always creates new objects
   User(this.id);
-  
-  // Fabric constructors not always create new objects, but you can work with it optionally  
+
+  // Fabric constructors not always create new objects, but you can work with it optionally
   factory User.cahce(int id) {
     if(id == 0) {
       return cacheUsers[0];
@@ -514,14 +515,13 @@ void main() {
 
 ```
 
-
-### Generics
+### Generics in classes
 
 ```dart
 class User<T> {
   String name;
   T password;
-  
+
   User(this.name, this.password);
 }
 
@@ -539,7 +539,7 @@ void main() {
 class ErrorBoundary {
   Object err;
   String message;
-  
+
   ErrorBoundary(this.err,this.message);
 }
 
@@ -574,7 +574,7 @@ void main() {
   int a = 1;
   Future<int> b = Future.delayed(Duration(seconds: 5)).then((val) => 2);
   int c = 3;
-  
+
   print(a);
   b.then((val) => print(val));
   print(c);
@@ -607,9 +607,7 @@ void main() async {
 }
 ```
 
-
 ## Streams
-
 
 ## Enums
 
@@ -631,7 +629,7 @@ enum NewColors {
 
   final int opacity50;
   final int opacity100;
-  
+
   const NewColors(this.opacity50, this.opacity100);
 }
 
@@ -648,4 +646,3 @@ void main() {
   print(NewColors.blue.opacity50);
 }
 ```
-
