@@ -1,3 +1,5 @@
+import 'dart:math';
+
 void main() {
   // print('hello, world!');
   //  1
@@ -46,14 +48,13 @@ void main() {
   // print(reverseStr('test'));
 
   // 5
-  Iterable<String> findPersonWithCertainAmountOfLetters(
-      List<String> names, int amount) {
+  Iterable<String> findItemByLength(List<String> names, int amount) {
     return names.where((name) => name.length == amount);
   }
 
   // print(
-  //     findPersonWithCertainAmountOfLetters(['John', 'Jack', 'Dean', 'Pat'], 3));
-  // print(findPersonWithCertainAmountOfLetters(
+  //     findItemByLength(['John', 'Jack', 'Dean', 'Pat'], 3));
+  // print(findItemByLength(
   //     ['John', 'Mag', 'Jack', 'Dean', 'Pat'], 3));
 
   // 6
@@ -68,5 +69,33 @@ void main() {
     return counter;
   }
 
-  print(countVowels('some')); //  2
+  // print(countVowels('some')); //  2
+
+  int rangeSum(int start, int end) {
+    if (start > end) return -1;
+    List<int> arr = [];
+
+    for (int i = start; i <= end; i++) {
+      arr.add(i);
+    }
+    return arr.reduce((value, element) => value + element);
+  }
+
+  // print(rangeSum(1, 5));
+  // print(rangeSum(5, 1));
+
+  String findMiddleChar(String str) {
+    String result = '';
+    if (str.length % 2 == 0) {
+      int evenMiddle = (str.length / 2).floor();
+      result = str[evenMiddle];
+    } else {
+      int oddMiddle = ((str.length - 1) / 2).floor();
+      result = str[oddMiddle];
+    }
+    return result;
+  }
+
+  // print(findMiddleChar('test'));
+  // print(findMiddleChar('testing'));
 }
