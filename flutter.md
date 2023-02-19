@@ -1,5 +1,16 @@
 # My Flutter cheat sheet
 
+## Create an empty project template in VSCode
+
+1. ctrl+shift+p
+2. Select "Flutter: New Project"
+3. Select "New Application"
+
+## Run mobile emulator
+
+1. Select in the borrom panel type of emulator (Web (Chrome), Desktop (Linux), Mobile (Android Nexus))
+2. Press **f5** button in the _main.dart_ file
+
 ## Start of the app
 
 ```dart
@@ -9,6 +20,22 @@ void main() {
 ```
 
 ## Stateless vs Stateful widgets
+
+## Stateless widget
+
+```dart
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('Test');
+  }
+}
+```
+
+### Stateful widget
 
 ```dart
 void main() {
@@ -606,4 +633,3 @@ class MyApp extends StatelessWidget {
 2.Copy _app-release.apk_ from "flutter_application_root_dir/build/app/outputs/flutter-apk" to your android mobile
 
 3.Find on your android mobile _app-release.apk_ file and run it ignoring security warnings.
-
