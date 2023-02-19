@@ -71,6 +71,7 @@ void main() {
 
   // print(countVowels('some')); //  2
 
+  // 7
   int rangeSum(int start, int end) {
     if (start > end) return -1;
     List<int> arr = [];
@@ -84,6 +85,7 @@ void main() {
   // print(rangeSum(1, 5));
   // print(rangeSum(5, 1));
 
+  // 8
   String findMiddleChar(String str) {
     String result = '';
     if (str.length % 2 == 0) {
@@ -98,4 +100,69 @@ void main() {
 
   // print(findMiddleChar('test'));
   // print(findMiddleChar('testing'));
+
+  // 9
+  squareNumberParts(num number) {
+    return int.parse(number
+        .toString()
+        .split('')
+        .map((String strNum) => int.parse(strNum) * int.parse(strNum))
+        .join(''));
+  }
+
+  // print(squareNumberParts(25)); //  425
+
+  // 10
+  String replaceAllFn(String s, String ch) {
+    return s.replaceAll('#', '');
+  }
+
+  // print(replaceAllFn('te###st', '#')); // 'test'
+
+  // 11
+  int findRepeat(List<int> arr) {
+    int result = -1;
+    final Map<int, int> map = {};
+
+    for (int i = 0; i < arr.length; i++) {
+      map[arr[i]] = i;
+    }
+
+    for (int number in arr) {
+      if (arr.indexOf(number) != map[number]) {
+        result = map[number]!;
+      }
+    }
+    return result;
+  }
+
+  // print(findRepeat([1, 2, 3, 4, 5, 6, 7, 3, 8, 9]));
+
+  // 12
+  List<List<int>> findRepeats(List<int> arr) {
+    List<List<int>> result = [];
+    final Map<int, int> map = {};
+
+    for (int i = 0; i < arr.length; i++) {
+      if (map.containsKey(arr[i])) {
+        map[arr[i]] = map[arr[i]]! + 1;
+      } else {
+        map[arr[i]] = 1;
+      }
+    }
+
+    map.forEach((key, value) {
+      if (value > 1) {
+        List<int> foundArr = [];
+        for (int i = 0; i < value; i++) {
+          foundArr.add(key);
+        }
+        result.add(foundArr);
+      }
+    });
+
+    return result;
+  }
+
+  print(findRepeats([1, 2, 3, 4, 5, 6, 7, 3, 8, 9, 5, 10]));
 }
