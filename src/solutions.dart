@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 void main() {
@@ -164,5 +165,99 @@ void main() {
     return result;
   }
 
-  print(findRepeats([1, 2, 3, 4, 5, 6, 7, 3, 8, 9, 5, 10]));
+  // print(findRepeats([1, 2, 3, 4, 5, 6, 7, 3, 8, 9, 5, 10]));
+
+  // 13
+  int countRepeatsInRange(List<int> arr, int l, int r, int target) {
+    if (l > r) return -1;
+    int counter = 0;
+
+    for (int i = l; i < r; i++) {
+      if (arr[i] == target) {
+        counter++;
+      }
+    }
+    return counter;
+  }
+
+  // print(countRepeatsInRange([1, 2, 3, 4, 5, 3, 6, 7, 5, 8, 9, 5], 2, 7, 3));
+
+  // 14  O(n^2-2)
+  bool isTargetSum(List<int> arr, int target) {
+    for (int i = 0; i < arr.length - 1; i++) {
+      for (int j = 1; j < arr.length; j++) {
+        if (arr[i] + arr[j] == target) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  // print(isTargetSum([1, 2, 3, 4, 5, 6, 7], 5));
+  // print(isTargetSum([1, 2, 3, 4, 5, 6, 7], 905));
+
+  // 15  O(n^2)
+  bool isTargetSumOpt(List<int> arr, int target) {
+    List<List<int>> result = [];
+    final Map<int, int> map = {};
+    for (int i = 0; i < arr.length; i++) {
+      map[arr[i]] = i;
+    }
+    map.forEach((key, value) {
+      int secondNum = target - key;
+      if (map.containsKey(secondNum)) {
+        if (secondNum > key) {
+          List<int> currentResult = [];
+          currentResult.addAll([key, secondNum]);
+          result.add(currentResult);
+        }
+      }
+    });
+    return result.length > 0;
+  }
+
+  // print(isTargetSumOpt([1, 2, 3, 4, 5, 6, 7], 5));
+  // print(isTargetSumOpt([1, 2, 3, 4, 5, 6, 7], 905));
+
+  // 15  O(?)
+  List<List<int>> findAllUniqueSums(List<int> arr, int target) {
+    List<List<int>> result = [];
+    final Map<int, int> map = {};
+    for (int i = 0; i < arr.length; i++) {
+      map[arr[i]] = i;
+    }
+    map.forEach((key, value) {
+      int secondNum = target - key;
+      if (map.containsKey(secondNum)) {
+        if (secondNum > key) {
+          List<int> currentResult = [];
+          currentResult.addAll([key, secondNum]);
+          result.add(currentResult);
+        }
+      }
+    });
+    return result;
+  }
+
+  // print(findAllUniqueSums([1, 2, 3, 4, 5, 6, 7], 5));
+  // print(findAllUniqueSums([1, 2, 3, 4, 5, 6, 7], 905));
+
+  String getShortestStrFromList(List<String> arr) {
+    String result = arr[0];
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i].length < result.length) {
+        result = arr[i];
+      }
+    }
+    return result;
+  }
+
+  // print(getShortestStrFromList(['Alice', 'Bob', 'Mark']));
+
+  // Timer(Duration(seconds: 2), () => print('test'));
+
+  new Timer.periodic(new Duration(seconds: 2), (timer) {
+    print('test');
+  });
 }

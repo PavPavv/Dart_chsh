@@ -33,14 +33,31 @@ Everything you can place in a variable is an object, and every object is an inst
 ```dart
 void main() {
   int a = 5;
+  print(a.runtimeType); //  int
+
   double b = 1.5;
+  print(b.runtimeType); //  double
+
   String c = 'Hello';
+  print(c.runtimeType); // String
+
   bool d = true;
+  print(d.runtimeType); //  bool
+
   bool e = false;
+  print(e.runtimeType); //  bool
 
   List arr = [1,'1',true,1,10];
+  print(arr.runtimeType); //  JSArray<dynamic>
+
+  List<int> arr1 = [1,10,200];
+  print(arr1.runtimeType);  //  JSArray<int>
+
   Set setF = {1,'1',true};
-  Map y = {1: 'hello',2: true};
+  print(setF.runtimeType);  //  _LinkedHashSet<dynamic>
+
+  Map y = {1: 'hello',2: true}; //  JsLinkedHashMap<dynamic, dynamic>
+  print(y.runtimeType);
 }
 ```
 
@@ -202,15 +219,44 @@ void main() {
   print('----------------------------------------------------');
 
   //  Map
-  Map<int, String> obj = {
+  Map<int, String> map = {
     1: 'Hello',
     2: 'world',
   };
-  //  print(obj['1']);
-  // obj.toList();
-  obj.putIfAbsent(3, () => '!');
+  print(map['1']);
+  map.toList();
+  map.putIfAbsent(3, () => '!');
+  map.remove(key);
+  map.removeWhere((mapItem) => mapItem < 2);
+  map.clear();
+  map.map((mapItem) => mapItem*2);
+  map.forEach((mapItem) => mapItem.callSmth())
   print('----------------------------------------------------');
 }
+```
+
+Check if data in map
+
+```dart
+Map<int, int> map = {};
+if (map.containsKey(1)) {};
+if (map.containsValue(2)) {};
+map.update(1,2);
+//  map.updateAll() ??
+```
+
+Iterate map
+
+```dart
+map.forEach((key, value) {
+  if (value > 1) {
+    List<int> foundArr = [];
+    for (int i = 0; i < value; i++) {
+      foundArr.add(key);
+    }
+    result.add(foundArr);
+  }
+});
 ```
 
 ## Function
@@ -281,6 +327,9 @@ class Animal {
   final String kind;
   final bool? isMale;
 
+  // Constrictor
+  Animal({required this.kind, this.isMale});
+
   String get animalKind {
     return kind;
   }
@@ -292,9 +341,6 @@ class Animal {
   String test() {
     return 'test';
   }
-
-  // Constrictor
-  Animal({required this.kind, this.isMale});
 }
 
 class Dog extends Animal {
@@ -303,7 +349,13 @@ class Dog extends Animal {
   final String? color;
 
   // Constrictor
-  Dog({required super.kind, super.isMale, required this.name, required this.age, this.color}) {
+  Dog({
+    required super.kind,
+    super.isMale,
+    required this.name,
+    required this.age,
+    this.color
+  }) {
     print('Created');
   }
 
@@ -563,6 +615,12 @@ void main() {
   }
   print('continue');
 }
+```
+
+## Interval, timeouts in Dart
+
+```dart
+Timer(Duration(seconds: 2), () => print('test'));
 ```
 
 ## Future
