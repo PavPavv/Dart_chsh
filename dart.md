@@ -206,9 +206,13 @@ void main() {
   arr1.where((el)=> el <= 9);
   arr1.whereType<int>();
   print('----------------------------------------------------');
+}
+```
 
+### Set
 
-  //  Set
+```dart
+void main() {
   Set<String> b = {'Hello', 'world'};
   Set<int> b1 = {100,200,300};
   b.add('!');
@@ -235,28 +239,28 @@ void main() {
 }
 ```
 
-Check if data in map
+### Map
 
 ```dart
-Map<int, int> map = {};
-if (map.containsKey(1)) {};
-if (map.containsValue(2)) {};
-map.update(1,2);
-//  map.updateAll() ??
-```
+void main() {
+  //  Check if data in map
+  Map<int, int> map = {};
+  if (map.containsKey(1)) {};
+  if (map.containsValue(2)) {};
+  map.update(1,2);
+  //  map.updateAll() ??
 
-Iterate map
-
-```dart
-map.forEach((key, value) {
-  if (value > 1) {
-    List<int> foundArr = [];
-    for (int i = 0; i < value; i++) {
-      foundArr.add(key);
+  //  Iterate map
+  map.forEach((key, value) {
+    if (value > 1) {
+      List<int> foundArr = [];
+      for (int i = 0; i < value; i++) {
+        foundArr.add(key);
+      }
+      result.add(foundArr);
     }
-    result.add(foundArr);
-  }
-});
+  });
+
 ```
 
 ## Function
